@@ -1,15 +1,28 @@
-This project presents a custom clone of the official Adidas website, developed as part of an
-advanced web development project. The objective is to create a fully functional and visually
-appealing e-commerce platform using HTML, CSS, and JavaScript, mirroring the features and
-design aesthetics of the original Adidas site. The website offers a seamless user experience
-through an intuitive interface, responsive design, and interactive elements, capturing the
-essence of the renowned brand.
+**Adidas E-Commerce Clone**
+Project Overview:
+This project is a fully functional e-commerce website inspired by the official Adidas store, built using HTML, CSS, and JavaScript for the frontend and Node.js with Express.js for the backend. It offers a seamless shopping experience with an intuitive user interface, interactive product displays, and a functional cart and checkout system.
 
-In addition to front-end technologies, the project integrates a Node.js backend to manage
-customer order details locally. This integration demonstrates a practical approach to handling
-e-commerce functionalities, such as user authentication, order processing, and data
-management. Node.js facilitates a robust server-side environment, enabling efficient data
-storage and retrieval, essential for maintaining customer order histories and ensuring data
-integrity.
+**Tech Stack**
+Frontend:
+HTML, CSS, JavaScript – For building the user interface and ensuring responsiveness.
+LocalStorage – To temporarily store cart items and order details on the client side.
 
-Your feedback is invaluable as we continue to improve the current state of the project.
+Backend:
+Node.js & Express.js – For handling server-side logic and order management.
+CORS & Body-Parser – To handle API requests securely.
+
+**Features**
+User Interface & Navigation:
+✅ Homepage with Interactive Carousel: Displays featured Adidas products.
+✅ Product Categories & Filtering: Users can browse products by category.
+✅ Product Details Page: Each product has an individual page with descriptions, images, and pricing.
+
+Shopping & Checkout:
+✅ Add to Cart: Users can select products and add them to their cart.
+✅ View & Update Cart: The cart page dynamically updates the total price and allows users to remove items.
+✅ Checkout System: Users enter shipping details and complete their purchase.
+✅ Order Confirmation Popup: Displays a success message after order placement.
+
+Backend & Data Handling:
+✅ Express.js Server: Handles API requests for processing orders.
+✅ In-Memory Storage: Stores order details (can be extended to a database).
