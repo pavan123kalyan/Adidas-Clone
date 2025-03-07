@@ -28,3 +28,6 @@ Shopping & Checkout:
 Backend & Data Handling:
 ✅ Express.js Server: Handles API requests for processing orders.
 ✅ In-Memory Storage: Stores order details (can be extended to a database).
+
+
+![image](https://github.com/user-attachments/assets/e2080534-06a5-4dd8-afa6-2e95d80b3176)
