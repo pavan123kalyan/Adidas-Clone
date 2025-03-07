@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas | E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+<body style="background-color:white">
+    <!-- Header Main -->
+    <div class="header">
+        <div class="container">
+            <div class="navbar" style="background-color:white">
+                <div class="logo">
+                    <img src="images/logo.png" width="120px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="">Home</a></li>    
+                        <li><a href="">About</a></li>
+                        <li><a href="">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart.png" width="35px" height="35px" style="margin-top: 6px"></a>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <h1 style="font-size: 120px">Elevating<br>Athletic<br>  Performance*</h1>
+                    <p style="font-size: 35px">*Sport begins with a single step.</p><br><br>
+                    <a href="#shop" class="btn"><b>Shop Now</b></a><br><br><br>
+                </div>
+                <div class="col-2">
+                    <div class="carousel">
+
+                        <img src="images/head1.png" class="active">
+                        <img src="images/head2.png">
+                        <img src="images/head3.png">
+                        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+                        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            let slideIndex = 0;
+
+            function changeSlide(n) {
+                const slides = document.querySelectorAll('.carousel img');
+                slides[slideIndex].classList.remove('active');
+                slideIndex = (slideIndex + n + slides.length) % slides.length;
+                slides[slideIndex].classList.add('active');
+            }
+
+            function autoSlide() {
+                changeSlide(1);
+            }
+
+            document.addEventListener('DOMContentLoaded', (event) => {
+                setInterval(autoSlide, 3000); // Change image every 3 seconds
+            });
+        </script>
+    </div>
+    <div id="shop" class="small-container2">
+        <img src="images/ict.png">
+        <a href="products.html?category=ict" class="ict-btn">Shop Now</a>
+    </div>
+
+    <div class="small-container">
+        <img src="images/rm.png">
+        <a href="products.html?category=rm" class="rm-btn">Shop Now</a>
+    </div>
+
+    <div class="small-container3">
+        <img src="images/yeezy.png">
+        <a href="products.html?category=yeezy" class="yeezy-btn">Shop Now</a>
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="showProducts('new')">New Arrivals</button>
+        <button class="tab-btn" onclick="showProducts('best')">Best</button>
+        <button class="tab-btn" onclick="showProducts('upcoming')">Upcoming</button>
+    
+        <!-- New Arrivals Tab -->
+        <div id="newProducts" class="product-container">
+            <!-- New Arrivals Product Images -->
+            <a href="product_detail.html?product=new1">
+                <img src="images/newarr/new1.png" alt="New Product 1">
+            </a>
+            <a href="product_detail.html?product=new2">
+                <img src="images/newarr/new2.png" alt="New Product 1">
+            </a>
+            <a href="product_detail.html?product=new3">
+                <img src="images/newarr/new3.png" alt="New Product 1">
+            </a>
+            <a href="product_detail.html?product=new4">
+                <img src="images/newarr/new4.png" alt="New Product 1">
+            </a>
+            <a href="product_detail.html?product=new5">
+                <img src="images/newarr/new5.png" alt="New Product 1">
+            </a>
+            <a href="product_detail.html?product=new6">
+                <img src="images/newarr/new6.png" alt="New Product 1">
+            </a>
+        </div>
+    
+        <!-- Best Tab -->
+        <div id="bestProducts" class="product-container" style="display: none;">
+            <!-- Best Product Images -->
+            <a href="product_detail.html?product=best1">
+                <img src="images/best/best1.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best2">
+                <img src="images/best/best2.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best3">
+                <img src="images/best/best3.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best4">
+                <img src="images/best/best4.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best5">
+                <img src="images/best/best5.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best6">
+                <img src="images/best/best6.png" alt="Best Product 1">
+            </a>
+            <a href="product_detail.html?product=best7">
+                <img src="images/best/best7.png" alt="Best Product 1">
+            </a>
+        </div>
+    
+        <!-- Upcoming Tab -->
+        <div id="upcomingProducts" class="product-container" style="display: none;">
+            <!-- Upcoming Product Images -->
+            <a href="product_detail.html?product=upcom1">
+                <img src="images/upcom/upcom1.png" alt="Upcoming Product 1">
+            </a>
+            <!-- Add more upcoming product images -->
+        </div>
+    </div>
+    
+    
+    
+
+    <script>
+        function showProducts(tabName) {
+            document.querySelectorAll('.product-container').forEach(function(container) {
+                container.style.display = 'none';
+            });
+    
+            
+            document.querySelectorAll('.tab-btn').forEach(function(btn) {
+                btn.classList.remove('active');
+            });
+    
+            document.getElementById(tabName + 'Products').style.display = 'flex';
+    
+            document.querySelector('button[data-tab="' + tabName + '"]').classList.add('active');
+        }
+    </script>
+    <div class="break">
+        <br>
+        <br>
+    </div>
+    <!-- about -->
+    <div class="about1">
+        <div class="col-3">
+            <h1><br>STORIES, STYLES AND SPORTSWEAR AT ADIDAS SPORTS STORE, SINCE 1949</h1>
+            <p>Sport keeps us fit. Keeps you mindful. Brings us together. Through sport we have the <br>power to change lives. Whether it is through stories of inspiring athletes. Helping you to<br>get up and get moving. Sporting goods featuring the latest technologies, to up your <br>performance. Beat your PB. adidas offers a home to the runner, the basketball player,<br>the soccer kid, the fitness enthusiast. The weekend hiker that loves to escape the city.<br>The yoga teacher that spreads the moves. The 3-Stripes are seen in the music scene. On<br>stage, at festivals. Our sports clothing keeps you focused before that whistle blows.<br>During the race. And at the finish lines.<br><br>
+
+                adidas is about more than sportswear and workout clothes. We partner with the best in<br>the industry to co-create. This way we offer our fans the sports apparel and style that <br>match their athletic needs, while keeping sustainability in mind. We’re here to support <br>creators. Improve their game. Create change. And we think about the impact we have on <br>our world.<br><br><br></p>
+        </div>
+
+        <div class="col-3">
+            <h1><br>YOUR SPORT SHOP, WITH ACTIVEWEAR FOR ANY <br>SPORT</h1>
+            <p>Adidas designs activewear for and with athletes of all kinds. Creators, who love to <br>change the game. Challenge conventions. Break the rules and define new ones. Then <br>break them again. We supply teams and individuals with sports clothing pre-match. To <br>stay focused. We design sportswear to get you to the finish line. To win the match. We <br>are the sport shop for women, with bras and tights made for purpose. From low to high <br>impact. We design, innovate and iterate. Testing new technologies in action. On the pitch, <br>the tracks, the court, the pool. Retro sportswear inspires new streetwear essentials. Like <br>NMD, and our Firebird tracksuits. Classic sports models are brought back to life.<br>Now seen on the streets and the stages.<br><br>
+
+                Through our collections we blur the borders between high fashion and high <br>performance. Like our adidas by Stella McCartney athletic clothing collection – designed <br>to look the part inside and outside of the gym. Or some of our adidas Originals lifestyle <br>pieces, that can be worn as sportswear too. Our lives are constantly changing. Becoming <br>more and more versatile. And adidas designs with that in mind.<br><br><br></p>
+        </div>
+
+        
+    </div>
+    
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="images/insta.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com"><img src="images/linked.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas | E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+
+
+</head>
+
+<body style="background-color:white">
+    <div class="header">
+        <div class="container">
+            <div class="navbar" style="background-color:rgb(0, 0, 0)">
+                <div class="logo">
+                    <img src="images/logo1.png" width="120px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color:white">Home</a></li>
+                        <li><a href="" style="color:white">About</a></li>
+                        <li><a href="" style="color:white">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart1.png" width="35px" height="35px" style="margin-top: 6px"></a>
+            </div>
+        </div>
+    </div>
+
+   
+
+
+    <div class="product-detail-container">
+        <div class="product-images">
+            <div class="main-image">
+                <img id="mainProductImage" src="" alt="Main Product Image">
+            </div>
+            <div class="thumbnail-images">
+                <!-- dynamically loads -->
+            </div>
+        </div>
+        <div class="product-details">
+            <h1 id="productTitle">Title</h1>
+            <p id="productPrice">$0.0</p>
+            <p id="productDescription">description</p>
+            <div class="size-selector">
+                <label for="sizes">Size:</label>
+                <select id="sizes">
+
+                </select>
+                <button id="addToCartButton">Add to Cart</button>
+            </div>
+            
+        </div>
+    </div>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const params = new URLSearchParams(window.location.search);
+            const productId = params.get('product');
+
+            const productDetails = {
+                ict1: {
+                    title: 'FW24 INDIA CRICKET T20 INTERNATIONAL JERSEY',
+                    price: '₹5 999.00',
+                    description: 'Sail in the boat of cricket as the cricket fever sets to engulf India with a T20 international start. This T20 men’s jersey is specially designed to uplift the team spirit with a tri-colour v-neck. Created for loyal supporters, with India written aloud, it shows off your team pride. Designed with adidas HEAT.RDY technology, this breathable fabric technology absorbs moisture, dries quickly, and keeps you cool while performing. Made with recycled materials, this product represents just one of our solutions to help end plastic waste.',
+                    images: [
+                        'images/ictprod/ict11.png',
+                        'images/ictprod/ict12.png',
+                        'images/ictprod/ict13.png',
+                        'images/ictprod/ict14.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                ict2: {
+                    title: 'INDIA CRICKET ODI JERSEY MEN',
+                    price: '₹5 999.00',
+                    description: 'Men’s ODI cricket jersey with Dream 11 logo is for every Indian Cricket Fan. The ODI jersey design represents the raw power, fierce beauty and undeniable strength of the tiger. You will find it in the traditional ikat pattern that adorns the fabric and brings to life the tiger’s stripes. Each stripe is imbued with an indomitable spirit, one that makes you believe “impossible is nothing.” Designed in the adidas HEAT.RDY technology, this breathable fabric technology absorbs moisture, dries quickly & keeps you cool while performing.',
+                    images: [
+                        'images/ictprod/ict21.png',
+                        'images/ictprod/ict22.png',
+                        'images/ictprod/ict23.png',
+                        'images/ictprod/ict24.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                ict3: {
+                    title: 'FW24 INDIA CRICKET T20 INTERNATIONAL JERSEY',
+                    price: '₹5 999.00',
+                    description: 'Represent in this India jersey. The adidas shirt the players wear in lightning-quick Twenty20 International cricket, it’s built from soft jacquard fabric that will keep you comfortable through every sweetly struck boundary and spectacular catch. Standing out over those famous cricket colours, a team crest completes the look.',
+                    images: [
+                        'images/ictprod/ict31.png',
+                        'images/ictprod/ict32.png',
+                        'images/ictprod/ict33.png',
+                        'images/ictprod/ict34.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                ict4: {
+                    title: 'INDIA LIMITED EDITION SHOE MEN',
+                    price: '₹7 999.00',
+                    description: 'Built specially for amid fans, these outstanding world cup 2023 limited edition India men shoes are going to be the show stealers for sure for its unique concept of TPU inserts indicating the past two world cup wins 1983 and 2011 and the upcoming 2023. The shoes have a premium golden branding. Each pair is unique with a stamp ranging from number 1-2023 to embark the world cup.This limited Edtion collectible comes with only 2023 pairs for all the avid cricket fans and sneaker heads.',
+                    images: [
+                        'images/ictprod/ict41.png',
+                        'images/ictprod/ict42.png',
+                        'images/ictprod/ict43.png',
+                        'images/ictprod/ict44.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                ict5: {
+                    title: 'TEST MATCH CRICKET JERSEY',
+                    price: '₹5 999.00',
+                    description: 'The India Test Jersey has landed and its yours for the taking now with the Dream 11 logo at the centre chest. Test Jersey comes with the iconic 3 Stripes on the shoulder. This comes with mesh insert on the sides for optimum ventilation. Designed in the adidas HEAT.RDY technology, this breathable fabric technology absorbs moisture, dries quickly & keeps you cool while performing.',
+                    images: [
+                        'images/ictprod/ict51.png',
+                        'images/ictprod/ict52.png',
+                        'images/ictprod/ict53.png',
+                        'images/ictprod/ict54.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                ict6: {
+                    title: 'CRI HASE SHOES',
+                    price: '₹4 599.00',
+                    description: 'Inspired from the 22YDS series these shoes are a great choice for the amateur cricketer and fan. The pair features a synthetic leather upper with perforated mesh for ventilation and TPU molded stripes for support and style. The injected EVA midsole provides lightweight cushioning, while the aggressive rubber outsole will ensure a firm grip, maximum traction and agility.',
+                    images: [
+                        'images/ictprod/ict61.png',
+                        'images/ictprod/ict62.png',
+                        'images/ictprod/ict63.png',
+                        'images/ictprod/ict64.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                ict7: {
+                    title: 'INDCRI BCPK',
+                    price: '₹4 999.00',
+                    description: 'Hit the road with all your cricket gear in this tournament bag from adidas. Laser-cut holes provide ventilation and a unique compartment keeps your shoes separate from the rest of your stuff. A dedicated space holds your gear.',
+                    images: [
+                        'images/ictprod/ict71.png',
+                        'images/ictprod/ict72.png',
+                        'images/ictprod/ict73.png',
+                        'images/ictprod/ict74.png'
+                    ],
+                    sizes: ['medium','large']
+                },
+
+                rm1: {
+                    title: 'REAL MADRID 24/25 HOME JERSEY',
+                    price: '₹5 999.00',
+                    description: 'When adidas designed Real Madrid’s home kit, they looked to the long-held traditions of the club’s famous city. Inspired by the "chulapo" outfits worn at Madrid’s annual San Isidro Fiesta, the houndstooth-style patterning on this football jersey gives it a dash of style. Also featuring moisture-managing AEROREADY and a embroidered club badge, this top is made for the fans.This product is made with 100% recycled materials.',
+                    images: [
+                        'images/rmprod/rm11.png',
+                        'images/rmprod/rm12.png',
+                        'images/rmprod/rm13.png',
+                        'images/rmprod/rm14.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm2: {
+                    title: 'REAL MADRID 24/25 HOME JERSEY',
+                    price: '₹5 999.00',
+                    description: 'When adidas designed Real Madrid’s home kit, they looked to the long-held traditions of the club’s famous city. Inspired by the "chulapo" outfits worn at Madrid’s annual San Isidro Fiesta, the houndstooth-style patterning on this football jersey gives it a dash of style. Also featuring moisture-managing AEROREADY and a embroidered club badge, this top is made for the fans.This product is made with 100% recycled materials.',
+                    images: [
+                        'images/rmprod/rm21.png',
+                        'images/rmprod/rm22.png',
+                        'images/rmprod/rm23.png',
+                        'images/rmprod/rm24.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm3: {
+                    title: 'REAL MADRID 24/25 LONG SLEEVE HOME JERSEY',
+                    price: '₹5 999.00',
+                    description: 'When adidas designed Real Madrid’s home kit, they looked to the long-held traditions of the club’s famous city. Inspired by the "chulapo" outfits worn at Madrid’s annual San Isidro Fiesta, the houndstooth-style patterning on this football jersey gives it a dash of style. Also featuring moisture-managing AEROREADY and a embroidered club badge, this top is made for the fans.This product is made with 100% recycled materials.',
+                    images: [
+                        'images/rmprod/rm21.png',
+                        'images/rmprod/rm22.png',
+                        'images/rmprod/rm23.png',
+                        'images/rmprod/rm24.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm4: {
+                    title: 'REAL MADRID 23/24 FOURTH AUTHENTIC SHORTS',
+                    price: '₹6 999.00',
+                    description: 'A fusion of elegance and tradition, these limited-collection adidas Real Madrid authentic shorts continue the club’s collaboration with Y-3. Starring alongside that heat-applied club badge, a Y-3 logo catches the eye. Behind the scenes, moisture-wicking AEROREADY powers unforgettable performances on the football field.This product is made with at least 70% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/rmprod/rm41.png',
+                        'images/rmprod/rm42.png',
+                        'images/rmprod/rm43.png',
+                        'images/rmprod/rm44.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm5: {
+                    title: 'REAL MADRID 23/24 FOURTH AUTHENTIC SHORTS',
+                    price: '₹6 999.00',
+                    description: 'A fusion of elegance and tradition, these limited-collection adidas Real Madrid authentic shorts continue the club’s collaboration with Y-3. Starring alongside that heat-applied club badge, a Y-3 logo catches the eye. Behind the scenes, moisture-wicking AEROREADY powers unforgettable performances on the football field.This product is made with at least 70% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/rmprod/rm51.png',
+                        'images/rmprod/rm52.png',
+                        'images/rmprod/rm53.png',
+                        'images/rmprod/rm54.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm6: {
+                    title: 'REAL MADRID 23/24 LFSTLR JERSEY',
+                    price: '₹7 999.00',
+                    description: 'Using the clubs eye-catching third kit as inspiration, this Real Madrid Jersey from adidas makes the switch from elite football performance to supreme wearability. Its luxe detailing and polyester jacquard elevate the look and feel of this premium jersey for comfortable, classy everyday wear. Complete with tonal badges, it creates a clean, crisp look that’s bound to be appreciated well beyond the club’s passionate fan base.Made with 100% recycled materials, this product represents just one of our solutions to help end plastic waste.',
+                    images: [
+                        'images/rmprod/rm61.png',
+                        'images/rmprod/rm62.png',
+                        'images/rmprod/rm63.png',
+                        'images/rmprod/rm64.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                rm7: {
+                    title: 'Y-3 REAL MADRID PRE-MATCH JERSEY',
+                    price: '₹15 999.00',
+                    description: 'Real Madrid and Y-3 consolidate their partnership with a new fourth kit. It’s inspired by the roots of both brands in its elegance, greatness, tradition and fashion. This jersey captures that spirit, and it’s almost an identical match to the one players suit up in before heading out to the pitch. Its comfortable doubleknit reversed waffle build features AEROREADY for a stay-dry feel. The club crest and a Y-3 logo add an authentic finish.',
+                    images: [
+                        'images/rmprod/rm71.png',
+                        'images/rmprod/rm72.png',
+                        'images/rmprod/rm73.png',
+                        'images/rmprod/rm74.png'
+                    ],
+                    sizes: ['S', 'M', 'L', 'XL', 'XXL', 'XXXL']
+                },
+                yz1: {
+                    title: 'YZY QNTM',
+                    price: '₹12 499.50',
+                    description: 'This product is excluded from all Discounts, Offers and Promotions. No Returns, Refunds or Exchanges. All Orders placed for this are final.',
+                    images: [
+                        'images/yeezyprod/yz11.png',
+                        'images/yeezyprod/yz12.png',
+                        'images/yeezyprod/yz13.png',
+                        'images/yeezyprod/yz14.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                yz2: {
+                    title: 'YZY FOAM RNR ADULTS',
+                    price: '₹8 999.00',
+                    description: 'THE YZY FOAM RNR, WHICH IS MADE IN THE U.S.A., FEATURES INJECTED EVA FOAM TO PROVIDE LIGHTWEIGHT DURABILITY. THIS MODEL IS MADE USING ALGAE HARVESTING TECHNOLOGY THAT HELPS TO KEEP LAKES CLEAN. THE SOFT TOP LAYER IN THE FOOTBED OFFERS IMMEDIATE STEP IN COMFORT. THE STRATEGICALLY MAPPED VENTS AROUND THE FOOT PROVIDE AIR FLOW AND BREATHABILITY. ADDITIONALLY, THE YZY FOAM RNR WILL USHER IN A NEW BOX CONSTRUCTION THAT REQUIRES LESS MATERIAL, WHICH LEADS TO LESS CARDBOARD MATERIAL WASTE.',
+                    images: [
+                        'images/yeezyprod/yz21.png',
+                        'images/yeezyprod/yz22.png',
+                        'images/yeezyprod/yz23.png',
+                        'images/yeezyprod/yz24.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                yz3: {
+                    title: 'YEEZY BOOST 700 V2',
+                    price: '₹23 999.00',
+                    description: 'The YEEZY BOOST 700 V2 Tephra features an upper composed of beige textile/canvas and premium leather with beige nubuck and suede overlays, with reflective details throughout. The full-length drop in boost midsole provides comfort and stability.',
+                    images: [
+                        'images/yeezyprod/yz31.png',
+                        'images/yeezyprod/yz32.png',
+                        'images/yeezyprod/yz33.png',
+                        'images/yeezyprod/yz34.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                yz4: {
+                    title: 'YEEZY BOOST 700',
+                    price: '₹21 999.00',
+                    description: 'The YEEZY BOOST 700 features an upper composed of beige textile/canvas and premium leather with beige nubuck and suede overlays, with reflective details throughout. The full-length drop in boost midsole provides comfort and stability.',
+                    images: [
+                        'images/yeezyprod/yz41.png',
+                        'images/yeezyprod/yz42.png',
+                        'images/yeezyprod/yz43.png',
+                        'images/yeezyprod/yz44.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                yz5: {
+                    title: 'YZY 700 V3',
+                    price: '₹19 999.00',
+                    description: 'This product is excluded from all Discounts, Offers and Promotions. No Returns, Refunds or Exchanges. All Orders placed for this are final.',
+                    images: [
+                        'images/yeezyprod/yz51.png',
+                        'images/yeezyprod/yz52.png',
+                        'images/yeezyprod/yz53.png',
+                        'images/yeezyprod/yz54.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },  
+                yz6: {
+                    title: 'YEEZY 500 HIGH',
+                    price: '₹21 999.00',
+                    description: 'This product is excluded from all Discounts, Offers and Promotions. No Returns, Refunds or Exchanges. All Orders placed for this are final.',
+                    images: [
+                        'images/yeezyprod/yz61.png',
+                        'images/yeezyprod/yz62.png',
+                        'images/yeezyprod/yz63.png',
+                        'images/yeezyprod/yz64.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                yz7: {
+                    title: 'YZY 700 V3',
+                    price: '₹18 999.00',
+                    description: 'This product is excluded from all Discounts, Offers and Promotions. No Returns, Refunds or Exchanges. All Orders placed for this are final.',
+                    images: [
+                        'images/yeezyprod/yz71.png',
+                        'images/yeezyprod/yz72.png',
+                        'images/yeezyprod/yz73.png',
+                        'images/yeezyprod/yz74.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new1: {
+                    title: 'ADISTAR 3 SHOES',
+                    price: '₹13 999.00',
+                    description: 'Set a steady pace toward your goals in these adidas running shoes. Built for distance runs, they feature a dual-density REPETITOR midsole for maximum cushioning and an energetic feel across the kilometres. This product features at least 20% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/newarr/new11.png',
+                        'images/newarr/new12.png',
+                        'images/newarr/new13.png',
+                        'images/newarr/new14.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new2: {
+                    title: 'AMPLIMOVE TRAINER SHOES',
+                    price: '₹6 999.00',
+                    description: 'Unlock your best self in these adidas training shoes. Ready for high-intensity interval training or versatile workouts, they have a breathable mesh upper and zoned TPU overlays in strategic areas to provide extra support for lateral moves.  This product features at least 20% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/newarr/new21.png',
+                        'images/newarr/new22.png',
+                        'images/newarr/new23.png',
+                        'images/newarr/new24.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new3: {
+                    title: 'QUESTAR 2 BOUNCE RUNNING SHOES',
+                    price: '₹7 999.00',
+                    description: 'Go further than you thought possible in these adidas running shoes. A breathable mesh upper provides a supportive fit. A full-length Bounce midsole delivers cushioning with a flexible feel for comfort on longer runs.  This product features at least 20% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/newarr/new31.png',
+                        'images/newarr/new32.png',
+                        'images/newarr/new33.png',
+                        'images/newarr/new34.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new4: {
+                    title: 'F50 LEAGUE FIRM/MULTI-GROUND BOOTS',
+                    price: '₹7 999.00',
+                    description: 'Free the fast with the adidas F50. Created to unlock the full potential of your acceleration, movement and speed. Locking you in with a stretchy tongue, the Fiberskin upper on these lightweight adidas League football boots shows off a Sprintgrid print on the forefoot. This product features at least 20% recycled materials. By reusing materials that have already been created, we help to reduce waste and our reliance on finite resources and reduce the footprint of the products we make.',
+                    images: [
+                        'images/newarr/new41.png',
+                        'images/newarr/new42.png',
+                        'images/newarr/new43.png',
+                        'images/newarr/new44.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new5: {
+                    title: 'PREDATOR LEAGUE LACELESS FIRM GROUND BOOTS',
+                    price: '₹9 999.00',
+                    description: 'When the goal’s in your sights, adidas Predator converts pressure into pinpoint accuracy. The Hybridfeel upper on these laceless League football boots includes an all-over 3D texture and grippy Strikescale fins to improve shooting precision. A Controlplate 2.0 outsole keeps you stable on firm ground so you’re always ready to fire.',
+                    images: [
+                        'images/newarr/new51.png',
+                        'images/newarr/new52.png',
+                        'images/newarr/new53.png',
+                        'images/newarr/new54.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                new6: {
+                    title: 'ADISTAR 3 SHOES',
+                    price: '₹13 999.00',
+                    description: 'Set a steady pace toward your goals in these adidas running shoes. Built for distance runs, they feature a full-length REPETITOR midsole for maximum cushioning across the kilometres. The breathable mesh upper allows air to flow so your feet stay cool, and an internal fit system locks down the foot for extra support over long distances. ',
+                    images: [
+                        'images/newarr/new61.png',
+                        'images/newarr/new62.png',
+                        'images/newarr/new63.png',
+                        'images/newarr/new64.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best1: {
+                    title: 'KAPTIR 3.0 SHOES',
+                    price: '₹7 999.00',
+                    description: 'You don’t do anything ordinary. Define your style with bold originality in these adidas shoes. The sleek silhouette brings a futuristic look, and they’re built with the comfort to match your daily moves. The Cloudfoam midsole gives ultra-soft cushioning so you feel light while looking fresh. Large graphic text makes them undeniably adidas.',
+                    images: [
+                        'images/best/best11.png',
+                        'images/best/best12.png',
+                        'images/best/best13.png',
+                        'images/best/best14.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best2: {
+                    title: 'VS PACE 2.0 SHOES',
+                    price: '₹4 999.00',
+                    description: 'Bust out that new trick you’ve been waiting to show off or just kick back in these adidas shoes. They stay true to their skateboarding heritage with a nubuck upper and a vulcanised midsole look. Lace them up to test your skills on the ramp, the flat bar or to just chill with friends.',
+                    images: [
+                        'images/best/best21.png',
+                        'images/best/best22.png',
+                        'images/best/best23.png',
+                        'images/best/best24.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best3: {
+                    title: 'LITE RACER ADAPT 4.0 SHOES',
+                    price: '₹6 999.00',
+                    description: 'Casual style that’s easy to get on and off. You’ll want to wear these adidas shoes every day of the week. Inspired by classic running looks, these shoes have a bold adidas graphic on the midfoot band. A mesh upper adds breathability, and the Cloudfoam midsole is ultra comfortable.',
+                    images: [
+                        'images/best/best31.png',
+                        'images/best/best32.png',
+                        'images/best/best3.png',
+                        'images/best/best34.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best4: {
+                    title: 'RUN 70S LIFESTYLE RUNNING SHOES',
+                    price: '₹6 999.00',
+                    description: 'Celebrate the ’70s in these adidas runners, and pay homage to a time when polyester suits were in and shag carpets were so thick you could do snow angels in them. The leather upper in this snappy rework of those running classics takes you back to the "me decade," no disco dancing required. 3-Stripes and adidas graphics on the tongue and heel tab complete the look.',
+                    images: [
+                        'images/best/best41.png',
+                        'images/best/best42.png',
+                        'images/best/best43.png',
+                        'images/best/best44.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best5: {
+                    title: 'CORERACER SHOES',
+                    price: '₹3 919.00',
+                    description: 'The adidas Coreracer Shoes strike a perfect balance of running support and streetwear style. They’re lightweight and breathable, to keep feet wrapped in all-day comfort. The adidas Badge of Sport completes the performance look.',
+                    images: [
+                        'images/best/best51.png',
+                        'images/best/best52.png',
+                        'images/best/best53.png',
+                        'images/best/best54.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best6: {
+                    title: 'COURTBLOCK SHOES',
+                    price: '₹3 999.00',
+                    description: 'Tackle your to-do list in these adidas trainers. The smooth faux leather upper is lined for comfort. A toe bumper adds protection at the front of the foot, and the classic rubber cupsole stands up to daily wear. ',
+                    images: [
+                        'images/best/best61.png',
+                        'images/best/best62.png',
+                        'images/best/best63.png',
+                        'images/best/best64.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                best7: {
+                    title: 'COURTBLOCK SHOES',
+                    price: '₹3 999.00',
+                    description: 'Tackle your to-do list in these adidas trainers. The smooth faux leather upper is lined for comfort. A toe bumper adds protection at the front of the foot, and the classic rubber cupsole stands up to daily wear. ',
+                    images: [
+                        'images/best/best71.png',
+                        'images/best/best72.png',
+                        'images/best/best73.png',
+                        'images/best/best74.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                },
+                upcom1: {
+                    title: 'SHADOWTURF SFTM SHOES',
+                    price: '₹11 999.00',
+                    description: 'Australian fashion label Song for the Mute is known for their unique approach and philosophy towards design. We see the fashion brand’s elevated eye in our collaboration on these adidas Shadowturf shoes.',
+                    images: [
+                        'images/upcom/upcom11.png',
+                        'images/upcom/upcom12.png',
+                        'images/upcom/upcom13.png',
+                        'images/upcom/upcom14.png'
+                    ],
+                    sizes: ['6', '7', '8', '9', '10', '11']
+                }
+            };
+
+            const product = productDetails[productId];
+
+            if (product) {
+                document.getElementById('productTitle').textContent = product.title;
+                document.getElementById('productPrice').textContent = product.price;
+                document.getElementById('productDescription').textContent = product.description;
+
+                const mainImage = document.getElementById('mainProductImage');
+                const thumbnailContainer = document.querySelector('.thumbnail-images');
+                const sizeSelector = document.getElementById('sizes');
+
+                mainImage.src = product.images[0];
+                thumbnailContainer.innerHTML = product.images.map(src => `<img class="thumbnail" src="${src}" alt="Thumbnail">`).join('');
+
+                product.sizes.forEach(size => {
+                    const option = document.createElement('option');
+                    option.value = size;
+                    option.textContent = size;
+                    sizeSelector.appendChild(option);
+                });
+
+                document.querySelectorAll('.thumbnail').forEach(image => {
+                    image.addEventListener('click', function () {
+                        mainImage.src = this.src;
+                    });
+                });
+
+                const addToCartButton = document.getElementById('addToCartButton');
+                addToCartButton.addEventListener('click', function () {
+                    const selectedSize = document.getElementById('sizes').value;
+                    addToCart(product.productId, product.title, product.price, product.images[0], selectedSize);
+                    alert('Item added to cart!');
+                });
+            }
+            // cart
+            function addToCart(productId, title, price, image, size) {
+                const cartItem = {
+                    productId: productId,
+                    title: title,
+                    price: price,
+                    image: image,
+                    size: size,
+                    quantity: 1 // default quantity 1
+                };
+
+                let cart = JSON.parse(localStorage.getItem('cart')) || [];
+                cart.push(cartItem);
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+        });
+
+    </script>
+
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="images/insta.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com"><img src="images/linked.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>

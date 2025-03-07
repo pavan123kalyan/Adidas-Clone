@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas | Your Cart</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+<body style="background-color:white">
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="navbar" style="background-color:rgb(0, 0, 0)">
+                <div class="logo">
+                    <img src="images/logo1.png" width="120px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color:white">Home</a></li>
+                        <li><a href="" style="color:white">About</a></li>
+                        <li><a href="" style="color:white">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart1.png" width="35px" height="35px" style="margin-top: 6px"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Main -->
+    <h1 align="center">Your Cart</h1>
+    <div id="cart-items">
+        <!-- dynamic loading -->
+    </div>
+
+    <div align="center" id="total-section" class="total-section">
+        <h3>Total:</h3>
+        <p id="cart-total">  </p>
+        <p></p>
+        <a href="checkout.html" class="chkout-btn">Checkout</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Retrieve stored items from localStorage
+            function getCartItems() {
+                return JSON.parse(localStorage.getItem('cart')) || [];
+            }
+
+            // Display items 
+            function displayCartItems() {
+                const cartItems = getCartItems();
+                const cartItemsContainer = document.getElementById('cart-items');
+
+                cartItemsContainer.innerHTML = '';
+
+                cartItems.forEach(item => {
+                    const cartItemDiv = document.createElement('div');
+                    cartItemDiv.classList.add('cart-item');
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.image;
+                    itemImage.alt = 'Product Image';
+
+                    const itemDetailsDiv = document.createElement('div');
+                    itemDetailsDiv.classList.add('item-details');
+
+                    const itemName = document.createElement('h3');
+                    itemName.textContent = item.title;
+
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: ${item.price}`;
+
+                    const itemSize = document.createElement('p');
+                    itemSize.textContent = `Size: ${item.size}`;
+
+                    const itemQuantity = document.createElement('p');
+                    itemQuantity.classList.add('quantity');
+                    itemQuantity.textContent = `Quantity: ${item.quantity}`;
+
+                    const removeButton = document.createElement('span');
+                    removeButton.classList.add('remove-item');
+                    removeButton.textContent = 'Remove';
+                    removeButton.addEventListener('click', function () {
+                        removeFromCart(item.productId);
+                    });
+
+                    itemDetailsDiv.appendChild(itemName);
+                    itemDetailsDiv.appendChild(itemPrice);
+                    itemDetailsDiv.appendChild(itemSize);
+                    itemDetailsDiv.appendChild(itemQuantity);
+                    itemDetailsDiv.appendChild(removeButton);
+
+                    cartItemDiv.appendChild(itemImage);
+                    cartItemDiv.appendChild(itemDetailsDiv);
+
+                    cartItemsContainer.appendChild(cartItemDiv);
+                });
+                updateCartTotal();
+            }
+
+            // Cart total
+            function updateCartTotal() {
+                const cartItems = getCartItems();
+                const cartTotal = cartItems.reduce((total, item) => total + parseFloat(item.price.replace(/[^\d.-]/g, '')) * item.quantity, 0);
+                document.getElementById('cart-total').textContent = ` ₹${cartTotal.toFixed(2)}`;
+            }
+
+            // Remove item from cart
+            function removeFromCart(productId) {
+                let cartItems = getCartItems();
+                cartItems = cartItems.filter(item => item.productId !== productId);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                displayCartItems();
+            }
+
+            // Display cart items 
+            displayCartItems();
+        });
+    </script>
+
+<!-- Footer -->
+
+<footer>
+    <div class="cart-footer-line" style="background-color:black ; height:1px"></div>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="images/insta.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com"><img src="images/linked.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

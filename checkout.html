@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas | Checkout</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body style="background-color: white; font-family: 'Arial', sans-serif;">
+    <!-- Header -->
+    <div class="header">
+        <div class="container">
+            <div class="navbar" style="background-color:rgb(0, 0, 0)">
+                <div class="logo">
+                    <img src="images/logo1.png" width="120px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color:white">Home</a></li>
+                        <li><a href="" style="color:white">About</a></li>
+                        <li><a href="" style="color:white">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart1.png" width="35px" height="35px" style="margin-top: 6px"></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Cart Items Section -->
+        <div class="cart-items-section">
+            <h1 align="center">Checkout</h1>
+            <div id="checkout-items">
+                <!-- Cart items will be displayed here -->
+            </div>
+        </div>
+
+        <!-- Customer Details and Payment Form Section -->
+        <div class="checkout-form-section">
+            <div class="checkout-form-container">
+                <h2>Customer Details</h2>
+                <form id="checkout-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <input type="checkbox" id="newsletter" name="newsletter">
+                        <label for="newsletter">Email me with news and offers</label>
+                    </div>
+                    <h3>Delivery</h3>
+                    <div class="form-group">
+                        <label for="country">Country/Region:</label>
+                        <input type="text" id="country" name="country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstname">First name:</label>
+                        <input type="text" id="firstname" name="firstname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname">Last name:</label>
+                        <input type="text" id="lastname" name="lastname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="apartment">Apartment, suite, etc. (optional):</label>
+                        <input type="text" id="apartment" name="apartment">
+                    </div>
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" id="city" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="state">State:</label>
+                        <input type="text" id="state" name="state" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pincode">PIN code:</label>
+                        <input type="text" id="pincode" name="pincode" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone:</label>
+                        <input type="text" id="phone" name="phone" required>
+                    </div>
+                    <h3>Payment</h3>
+                    <div class="form-group">
+                        <label for="payment">Cash On Delivery</label>
+                        
+                    </div>
+                    <h5>Card & UPI payments are accepted on CoD</h5>
+                    <br>
+                    <button type="submit" id="place-order-button" class="btn-primary">Pay now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="popup" id="popup">
+        <h2>Congratulations!</h2>
+        <p>Your order has been placed successfully.</p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="cart-footer-line" style="background-color:black ; height:1px"></div>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="images/insta.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com"><img src="images/linked.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Function to retrieve cart items from localStorage
+            function getCartItems() {
+                return JSON.parse(localStorage.getItem('cart')) || [];
+            }
+
+            // Function to display cart items in the checkout page
+            function displayCartItems() {
+                const cartItems = getCartItems();
+                const checkoutItemsContainer = document.getElementById('checkout-items');
+
+                checkoutItemsContainer.innerHTML = '';
+
+                cartItems.forEach(item => {
+                    const cartItemDiv = document.createElement('div');
+                    cartItemDiv.classList.add('checkout-item');
+
+                    const itemImage = document.createElement('img');
+                    itemImage.src = item.image;
+                    itemImage.alt = 'Product Image';
+
+                    const itemDetailsDiv = document.createElement('div');
+                    itemDetailsDiv.classList.add('item-details');
+
+                    const itemName = document.createElement('h3');
+                    itemName.textContent = item.title;
+
+                    const itemPrice = document.createElement('p');
+                    itemPrice.textContent = `Price: ${item.price}`;
+
+                    const itemSize = document.createElement('p');
+                    itemSize.textContent = `Size: ${item.size}`;
+
+                    const itemQuantity = document.createElement('p');
+                    itemQuantity.classList.add('quantity');
+                    itemQuantity.textContent = `Quantity: ${item.quantity}`;
+
+                    itemDetailsDiv.appendChild(itemName);
+                    itemDetailsDiv.appendChild(itemPrice);
+                    itemDetailsDiv.appendChild(itemSize);
+                    itemDetailsDiv.appendChild(itemQuantity);
+
+                    cartItemDiv.appendChild(itemImage);
+                    cartItemDiv.appendChild(itemDetailsDiv);
+
+                    checkoutItemsContainer.appendChild(cartItemDiv);
+                });
+            }
+
+            function showPopup() {
+                document.getElementById('overlay').style.display = 'block';
+                document.getElementById('popup').style.display = 'block';
+            }
+
+            // Function to close pop-up
+            function closePopup() {
+                document.getElementById('overlay').style.display = 'none';
+                document.getElementById('popup').style.display = 'none';
+            }
+
+            // Handle form submission
+            const checkoutForm = document.getElementById('checkout-form');
+            checkoutForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                // Collect form data (example)
+                const formData = new FormData(checkoutForm);
+                const customerData = {};
+                formData.forEach((value, key) => {
+                    customerData[key] = value;
+                });
+
+                // Log data (replace with actual order logic)
+                console.log('Customer Data:', customerData);
+
+                // Send data to the backend
+                fetch('http://localhost:3000/api/checkout', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(customerData)
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log('Success:', data);
+                        showPopup();
+
+                        // Optionally, clear the cart after placing order
+                        localStorage.removeItem('cart');
+
+                        // Redirect to thank you page or home page after some delay (example)
+                        setTimeout(function () {
+                            // window.location.href = 'thank-you.html'; // Uncomment and replace with your thank you page URL
+                            closePopup();
+                        }, 3000); // Delay for 3 seconds
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+
+            // Display cart items on page load
+            displayCartItems();
+        });
+    </script>
+
+</body>
+
+</html>

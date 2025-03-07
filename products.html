@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adidas | E-Commerce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
+        rel="stylesheet">
+
+    <script>
+        function getQueryParameter(name) {
+            let url = new URL(window.location.href);
+            return url.searchParams.get(name);
+        }
+
+        function loadProducts() {
+            let category = getQueryParameter('category');
+            let titleElement = document.querySelector('.title');
+            let productContainer = document.querySelector('.row-2');
+            let aboutContainer = document.querySelector('.about-section');
+            if (category === 'ict') {
+                titleElement.textContent = 'INDIAN CRICKET TEAM GEAR';
+                titleElement.style.fontSize='30px'
+                productContainer.innerHTML = `
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict1"><img src="images/ictprod/ict1.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict2"><img src="images/ictprod/ict2.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict3"><img src="images/ictprod/ict3.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict4"><img src="images/ictprod/ict4.png"></a>  
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict5"><img src="images/ictprod/ict5.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict6"><img src="images/ictprod/ict6.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=ict7"><img src="images/ictprod/ict7.png"></a>
+                        </div>
+                    `;
+                    aboutContainer.innerHTML=`
+                    
+                    <h1>ITS JUST A BAT, A BALL AND YOU<h2>
+                    <p>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp#YouGotThis</p>`;
+            } else if (category === 'rm') {
+                titleElement.textContent = 'REAL MADRID FOOTBALL GEAR';
+                titleElement.style.fontSize = '30px';
+                productContainer.innerHTML = `
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm1"><img src="images/rmprod/rm1.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm2"><img src="images/rmprod/rm2.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm3"><img src="images/rmprod/rm3.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm4"><img src="images/rmprod/rm4.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm5"><img src="images/rmprod/rm5.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm6"><img src="images/rmprod/rm6.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=rm7"><img src="images/rmprod/rm7.png"></a>
+                        </div>
+                    `;
+                    aboutContainer.innerHTML = `
+                    
+        <h2><b>REAL MADRID ADIDAS FOOTBALL SPORTS AND TRAINING WEAR</b></h2>
+        <p>Real Madrid is easily among today’s most competitive professional football clubs and one of the top crowd favourites. For a fan, wearing clothing inspired by the team’s actual <br>practice and match apparel is a truly exciting proposition. adidas Real Madrid football clothing is sought after by fans due to its unmistakeable styling, outstanding <br>technologies and exceptional construction. The home and away jerseys, for example, come in authentic and street versions but share the same iconic Real Madrid crest.<br> Authentic jerseys feature Climachill technology for ultra dryness and coolness even when the day is unforgivingly hot. The slim fit and heat-transfer details of these jerseys <br>dramatically reduce weight and resist wind drag so you can glide across the field. Streetwear jerseys share a similar design inspiration but use Climalite fabric that wicks <br>sweat away from the body so you remain dry and cool throughout the match. Away shorts use the same fabric and follow the same styling as the jerseys so you can score the <br>perfect look for a training session or actual game.<br></p>
+        <h4>Warm yourself up</h4>
+        <p>The Real Madrid adidas range includes jackets and long sleeves that will allow you to fight both heat and cold while you hone your skills in practice or do your best in an<br> intense game. Our anthem jackets sport the iconic team crest on the chest, as well as a 100% polyester twill fabric that’s kind to the environment. The all-weather jackets <br>boast back ventilation and a packable hood that’s a unique marriage of form and function. These adidas Real Madrid football garments will not only keep you warm when<br>needed, but also help you cool down after heated runs on the pitch.<br></p>
+        <h4>Complete the Real Madrid look</h4>
+        <p>One look at our range and you’ll find practically every item of adidas Real Madrid football clothing and accessories that you could possibly need. From beanies, caps,<br> wristbands and gloves through to gym bags, scarfs, shin guards and backpacks, we have you completely covered. Click through our products to find the items that will<br> complete your look so you can play, practice or cheer in unmistakeable Real Madrid fashion.<br><br></p>
+                `;
+            } else if(category==='yeezy') {
+                titleElement.textContent = 'YEEZY ORIGINALS';
+                titleElement.style.fontSize = '30px';
+                productContainer.innerHTML = `
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz1"><img src="images/yeezyprod/yz1.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz2"><img src="images/yeezyprod/yz2.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz3"><img src="images/yeezyprod/yz3.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz4"><img src="images/yeezyprod/yz4.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz5"><img src="images/yeezyprod/yz5.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz6"><img src="images/yeezyprod/yz6.png"></a>
+                        </div>
+                        <div class="col-4">
+                            <a href="product_detail.html?product=yz7"><img src="images/yeezyprod/yz7.png"></a>
+                        </div>
+                    `;
+                    aboutContainer.innerHTML=`
+                    
+                    <h1>Adidas Yeezy:<h2>
+                    <p>
+Introducing Yeezy: A fusion of cutting-edge design and unparalleled comfort, Yeezy sneakers redefine footwear fashion.<br> Born from the collaboration between Adidas and renowned artist Kanye West, each pair embodies a blend of innovation<br> and style. With iconic models like the Yeezy Boost 350, 500, and 700, Yeezys have become synonymous with exclusivity <br>and hype, capturing the hearts of sneaker enthusiasts worldwide. Step into the future of footwear with Yeezy.</p>`;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProducts);
+    </script>
+</head>
+
+<body style="background-color:white">
+    <!-- Header Products -->
+    <div class="header">
+        <div class="container">
+            <div class="navbar" style="background-color:rgb(0, 0, 0)">
+                <div class="logo">
+                    <img src="images/logo1.png" width="120px">
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="index.html" style="color:white">Home</a></li>
+                        <li><a href="" style="color:white">About</a></li>
+                        <li><a href="" style="color:white">Account</a></li>
+                    </ul>
+                </nav>
+                <a href="cart.html"><img src="images/cart1.png" width="35px" height="35px" style="margin-top: 6px"></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="prod-container">
+        <h2 class="title">Products</h2>
+        <div class="row-2">
+            <!-- Products will be loaded here -->
+        </div>
+
+        <div class="about-section">
+            <!-- Product About section will be loaded here -->
+        </div>
+    </div>
+
+
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h4>About Us</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Customer Service</h4>
+                <ul>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">Shipping & Returns</a></li>
+                    <li><a href="#">Store Policy</a></li>
+                    <li><a href="#">Payment Methods</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="https://www.facebook.com"><img src="images/facebook.png" alt="Facebook"></a>
+                    <a href="https://www.instagram.com"><img src="images/insta.png" alt="Instagram"></a>
+                    <a href="https://www.twitter.com"><img src="images/twitter.png" alt="Twitter"></a>
+                    <a href="https://www.linkedin.com"><img src="images/linked.png" alt="LinkedIn"></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</body>
+
+</html>
