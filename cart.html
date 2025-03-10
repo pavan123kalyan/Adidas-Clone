@@ -111,12 +111,7 @@
             }
 
             // Remove item from cart
-            // function removeFromCart(productId) {
-            //     let cartItems = getCartItems();
-            //     cartItems = cartItems.filter(item => item.productId !== productId);
-            //     localStorage.setItem('cart', JSON.stringify(cartItems));
-            //     displayCartItems();
-            // }
+       
             function removeFromCart(index){
                 let cartItems=getCartItems();
                 cartItems.splice(index,1);
