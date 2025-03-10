@@ -13,7 +13,7 @@
 </head>
 <body style="background-color:white">
     <!-- Header -->
-    <div class="header">
+    <div class="header"> 
         <div class="container">
             <div class="navbar" style="background-color:rgb(0, 0, 0)">
                 <div class="logo">
@@ -111,13 +111,18 @@
             }
 
             // Remove item from cart
-            function removeFromCart(productId) {
-                let cartItems = getCartItems();
-                cartItems = cartItems.filter(item => item.productId !== productId);
-                localStorage.setItem('cart', JSON.stringify(cartItems));
+            // function removeFromCart(productId) {
+            //     let cartItems = getCartItems();
+            //     cartItems = cartItems.filter(item => item.productId !== productId);
+            //     localStorage.setItem('cart', JSON.stringify(cartItems));
+            //     displayCartItems();
+            // }
+            function removeFromCart(index){
+                let cartItems=getCartItems();
+                cartItems.splice(index,1);
+                localStorage.setItem('cart',JSON.stringify(cartItems));
                 displayCartItems();
             }
-
             // Display cart items 
             displayCartItems();
         });
@@ -128,6 +133,7 @@
 <footer>
     <div class="cart-footer-line" style="background-color:black ; height:1px"></div>
         <div class="footer-container">
+
             <div class="footer-col">
                 <h4>About Us</h4>
                 <ul>
@@ -137,6 +143,7 @@
                     <li><a href="#">Contact Us</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Customer Service</h4>
                 <ul>
@@ -146,6 +153,7 @@
                     <li><a href="#">Payment Methods</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
                 <h4>Follow Us</h4>
                 <div class="social-links">
