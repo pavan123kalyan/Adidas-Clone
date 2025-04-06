@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adidas | Your Cart</title>
+
     <link rel="stylesheet" href="style.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Saira+Condensed:wght@100;200;300;400;500;600;700;800;900&family=Teko:wght@300..700&display=swap" rel="stylesheet">
 </head>
 <body style="background-color:white">
-    <!-- Header -->
+    <!-- Header --> 
     <div class="header"> 
         <div class="container">
             <div class="navbar" style="background-color:rgb(0, 0, 0)">
@@ -43,10 +43,10 @@
         <p></p>
         <a href="checkout.html" class="chkout-btn">Checkout</a>
     </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Retrieve stored items from localStorage
+            // JSON.parse() is used to convert string into a javascript object,It is js built in fn.
             function getCartItems() {
                 return JSON.parse(localStorage.getItem('cart')) || [];
             }
@@ -55,13 +55,10 @@
             function displayCartItems() {
                 const cartItems = getCartItems();
                 const cartItemsContainer = document.getElementById('cart-items');
-
                 cartItemsContainer.innerHTML = '';
-
                 cartItems.forEach(item => {
                     const cartItemDiv = document.createElement('div');
                     cartItemDiv.classList.add('cart-item');
-
                     const itemImage = document.createElement('img');
                     itemImage.src = item.image;
                     itemImage.alt = 'Product Image';
@@ -111,24 +108,20 @@
             }
 
             // Remove item from cart
-       
             function removeFromCart(index){
                 let cartItems=getCartItems();
                 cartItems.splice(index,1);
                 localStorage.setItem('cart',JSON.stringify(cartItems));
                 displayCartItems();
             }
-            // Display cart items 
+            // Display cart items
             displayCartItems();
         });
     </script>
-
 <!-- Footer -->
-
 <footer>
     <div class="cart-footer-line" style="background-color:black ; height:1px"></div>
         <div class="footer-container">
-
             <div class="footer-col">
                 <h4>About Us</h4>
                 <ul>

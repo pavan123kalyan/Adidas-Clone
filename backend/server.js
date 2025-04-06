@@ -1,13 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
 const app = express();
 const port = 3000;
-
 app.use(bodyParser.json());
 app.use(cors());
-
 // Simple in-memory storage for demonstration
 let orders = [];
 app.get('/', (req, res) => {
